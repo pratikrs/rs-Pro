@@ -1,0 +1,87 @@
+﻿@model RafCompare.Entities.ProductEntities.Brands
+@{
+    ViewBag.Title = "Update Brand";
+}
+@if (ViewBag.BrandId != null)
+{
+    <section class="content-header">
+        <h1>
+            Error Page
+        </h1>
+        <div id="child-breadcrumb" style="display:none">
+            <ol class="breadcrumb" style="">
+                <li><a href="@Url.Action("Index","Home")" style="color: rgb(255, 255, 255); text-decoration: underline;"><i class="fa fa-home">&nbsp;</i>Home</a></li>
+                <li><a href="@Url.Action("Brands", "Brand")" style="color: rgb(255, 255, 255); text-decoration: underline;">Brands</a></li>
+                <li class="active" style="color: rgb(255, 255, 255);">Error</li>
+            </ol>
+        </div>
+    </section>
+    <section class="content">
+        <div class="error-page">
+
+            <div class="error-content">
+                <h3><i class="fa fa-warning text-yellow"></i>Oops! Brand detail not found.</h3>
+                <p>
+                    We could not find the brand detail you were looking for.
+                    Meanwhile, you may <a href="@Url.Action("Brands", "Brand")">return to Brands List</a>.
+                </p>
+            </div>
+            <!-- /.error-content -->
+        </div>
+        <!-- /.error-page -->
+    </section>
+}
+else
+{
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Update Brand
+        </h1>
+        <div id="child-breadcrumb" style="display:none">
+            <ol class="breadcrumb" style="">
+                <li><a href="@Url.Action("Index","Home")" style="color: rgb(255, 255, 255); text-decoration: underline;"><i class="fa fa-home">&nbsp;</i>Home</a></li>
+                <li><a href="@Url.Action("Brands", "Brand")" style="color: rgb(255, 255, 255); text-decoration: underline;">Brands</a></li>
+                <li class="active" style="color: rgb(255, 255, 255);">Update Brand</li>
+            </ol>
+        </div>
+    </section>
+    using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmCreateBrands" }))
+    {
+    <!-- Main content -->
+        <section class="content">
+
+
+            <div class="row">
+                <div class="margin">
+                    <div class="col-md-8">
+                        <div class="form-group has-error">
+                            @Html.ValidationSummary()
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div class="form-group col-md-3">
+                                <label for="@Model.BrandName">Brand Name</label>
+                                @Html.TextBoxFor(x => x.BrandName, new { @class = "form-control", @maxlength = "50" })
+                                @Html.HiddenFor(x => x.BrandId)
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <div class="col-md-12" style="margin-top: 5%;">
+                    <a href="@Url.Action("Brands")" class="btn btn-primary" id="">Back to List</a>
+                    <button class="btn btn-primary" type="submit" id="btnAddBrands">Update</button>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </section>
+    <!-- /.content -->
+    }
+}
